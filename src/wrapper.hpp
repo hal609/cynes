@@ -3,6 +3,7 @@
 
 #include "nes.hpp"
 
+#include <pybind11/pybind11.h>
 #include <pybind11/numpy.h>
 #include <cstdint>
 
@@ -31,6 +32,8 @@ public:
     /// @note This function also reset the crashed flag.
     /// @param buffer Save state buffer.
     void load(pybind11::array_t<uint8_t> buffer);
+
+    pybind11::array_t<uint8_t> read_all_ram();
 
     /// Write to the console memory.
     /// @note This function has other side effects than simply writing to the memory, it
